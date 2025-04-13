@@ -1,3 +1,87 @@
 @import "togle.css";
 @import "reset.css";
 @import "variables.css";
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+
+    --toggle-bg: #dee2e6;
+    --toggle-circle: #ffffff;
+    --toggle-border: #ced4da;
+    --toggle-active: #198754;
+
+    --shadow: rgba(0, 0, 0, 0.1);
+    --transition-time: 0.6s; /* aumentei um pouco pra mostrar a animação melhor */
+}
+
+#theme-toggle:checked ~ .page {
+    --bg-color: #212529;
+    --text-color: #f8f9fa;
+    --toggle-bg: #495057;
+    --toggle-border: #6c757d;
+}
+
+/* ANIMAÇÃO */
+@keyframes slideIn {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.page {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: background-color var(--transition-time) ease,
+                color var(--transition-time) ease;
+}
+
+.content {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+}
+
+.info-text {
+    line-height: 1.7;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    animation: slideIn var(--transition-time) ease;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    transition: opacity var(--transition-time) ease;
+}
+
+#theme-toggle:checked ~ .page .info-text {
+    animation-direction: reverse;
+}
+
+.info-text:hover {
+    opacity: 1;
+}
