@@ -1,2 +1,77 @@
+<style>
+/* Estilo do switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* Toggle ON */
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+/* Elemento que será animado */
+.box {
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  background: tomato;
+}
+
+/* Animação */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Quando toggle está ativado, anima */
+input:checked ~ .box {
+  animation: pulse 1s infinite;
+}
+</style>
+
+<!-- Toggle -->
+<label class="switch">
+  <input type="checkbox" id="toggle">
+  <span class="slider"></span>
+</label>
+
+<!-- Elemento animado -->
+<div class="box"></div>
 
   
